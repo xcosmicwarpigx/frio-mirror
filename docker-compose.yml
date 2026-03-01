@@ -9,13 +9,13 @@ services:
     environment:
       - DISPLAY=${DISPLAY:-:0}
       - XAUTHORITY=/tmp/.docker.xauth
-      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - ADB_HOST=${ADB_HOST:-}
+      - ADB_PORT=${ADB_PORT:-5555}
+      - ADB_PAIRING_CODE=${ADB_PAIRING_CODE:-}
+      - ADB_PAIRING_PORT=${ADB_PAIRING_PORT:-}
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /dev/bus/usb:/dev/bus/usb
-      - /run/user/1000/pulse:/run/user/1000/pulse
-      - /var/run/dbus:/var/run/dbus
-      - /etc/resolv.conf:/etc/resolv.conf:ro
     devices:
       - /dev/bus/usb
     stdin_open: true
